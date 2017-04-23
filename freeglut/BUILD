@@ -1,0 +1,107 @@
+package(default_visibility=["//visibility:public"])
+
+LINUX_STUFF = [
+    "src/x11/fg_internal_x11_glx.h",
+    "src/x11/fg_internal_x11.h",
+    "src/x11/fg_state_x11_glx.h",
+    "src/x11/fg_window_x11_glx.h",
+    "src/x11/fg_cursor_x11.c",
+    "src/x11/fg_display_x11_glx.c",
+    "src/x11/fg_ext_x11.c",
+    "src/x11/fg_gamemode_x11.c",
+    "src/x11/fg_glutfont_definitions_x11.c",
+    "src/x11/fg_init_x11.c",
+    "src/x11/fg_input_devices_x11.c",
+    "src/x11/fg_joystick_x11.c",
+    "src/x11/fg_main_x11.c",
+    "src/x11/fg_menu_x11.c",
+    "src/x11/fg_spaceball_x11.c",
+    "src/x11/fg_state_x11.c",
+    "src/x11/fg_state_x11_glx.c",
+    "src/x11/fg_structure_x11.c",
+    "src/x11/fg_window_x11.c",
+    "src/x11/fg_window_x11_glx.c",
+    "src/x11/fg_xinput_x11.c",
+    "src/egl/fg_init_egl.h",
+]
+
+EGL_STUFF = [
+    "src/egl/fg_init_egl.c",
+    "src/egl/fg_init_egl.h",
+    "src/egl/fg_display_egl.c",
+    "src/egl/fg_ext_egl.c",
+    "src/egl/fg_internal_egl.h",
+    "src/egl/fg_state_egl.c",
+    "src/egl/fg_state_egl.h",
+    "src/egl/fg_structure_egl.c",
+    "src/egl/fg_structure_egl.h",
+    "src/egl/fg_window_egl.c",
+    "src/egl/fg_window_egl.h",
+]
+
+cc_library(
+    name = "freeglut",
+    copts = [
+        "-Ifreeglut/src"
+    ],
+    defines = [
+        "HAVE_CONFIG_H",
+    ],
+    includes = [
+        "include",
+        ".",
+    ],
+    hdrs = [
+        "include/GL/freeglut_ext.h",
+        "include/GL/freeglut.h",
+        "include/GL/freeglut_std.h",
+        "include/GL/glut.h",
+    ],
+    srcs = [
+        "src/fg_callbacks.c",
+        "src/fg_cursor.c",
+        "src/fg_display.c",
+        "src/fg_ext.c",
+        "src/fg_font.c",
+        "src/fg_font_data.c",
+        "src/fg_gamemode.c",
+        "src/fg_geometry.c",
+        "src/fg_gl2.c",
+        "src/fg_gl2.h",
+        "src/fg_init.c",
+        "src/fg_init.h",
+        "src/fg_input_devices.c",
+        "src/fg_internal.h",
+        "src/fg_joystick.c",
+        "src/fg_main.c",
+        "src/fg_menu.c",
+        "src/fg_misc.c",
+        "src/fg_overlay.c",
+        "src/fg_spaceball.c",
+        "src/fg_state.c",
+        "src/fg_stroke_mono_roman.c",
+        "src/fg_stroke_roman.c",
+        "src/fg_structure.c",
+        "src/fg_teapot.c",
+        "src/fg_teapot_data.h",
+        "src/fg_videoresize.c",
+        "src/fg_window.c",
+#        "src/gles_stubs.c",
+        "src/util/xparsegeometry_repl.h",
+        "src/util/xparsegeometry_repl.c",
+        "config.h",
+    ] + LINUX_STUFF  ,
+    deps = [
+    ],
+    linkopts = [
+        "-lm",
+        "-lGL",
+        "-lGLU",
+        "-lX11",
+        "-lXxf86vm",
+        "-lXrandr",
+        "-lXi",
+    ],
+)
+
+
