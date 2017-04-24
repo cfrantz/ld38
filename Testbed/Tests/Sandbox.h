@@ -139,6 +139,7 @@ public:
 		if (particleSystem != m_particleSystem)
 			return;
 
+        printf("Destroying particle %d\n", index);
 		// NOTE: user data could be used as an alternative method to look up
 		// the local handle pointer from the index.
 		size_t erased = m_particles.erase(
