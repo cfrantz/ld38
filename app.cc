@@ -17,8 +17,6 @@
 #endif
 
 
-DECLARE_string(config);
-
 namespace ld38 {
 
 void VolcanoApp::Init() {
@@ -96,12 +94,6 @@ void VolcanoApp::Draw() {
 #ifdef HAVE_NFD
 #endif
             ImGui::Separator();
-            if (!FLAGS_config.empty()) {
-                if (ImGui::MenuItem("Reload Config")) {
-//                    auto* config = ConfigLoader<avg::RomInfo>::Get();
-//                    config->Reload();
-                }
-            }
             if (ImGui::MenuItem("Quit")) {
                 running_ = false;
             }
